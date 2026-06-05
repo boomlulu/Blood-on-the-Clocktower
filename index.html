@@ -18,13 +18,12 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-  background:#0e0b08;color:var(--parch);
+  /* 非固定渐变：只画一次随页面滚动，移动端每帧零重绘成本 */
+  background:radial-gradient(circle at 50% 0, #2a2016 0%, transparent 45%),linear-gradient(180deg,#14100c 0%, #0e0b08 70%);
+  background-repeat:no-repeat;background-color:#0e0b08;color:var(--parch);
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   min-height:100vh;line-height:1.6;padding-bottom:90px;
 }
-/* 固定渐变背景放在独立图层：视觉等同 background-attachment:fixed，但滚动时不重绘 */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle at 50% -10%, #2a201688 0%, transparent 55%),linear-gradient(180deg,#14100c 0%, #0e0b08 100%);}
 header{text-align:center;padding:18px 16px 6px}
 header .moon{font-size:28px;filter:drop-shadow(0 0 8px #c9a24b66)}
 header h1{margin:4px 0 2px;font-size:23px;letter-spacing:2px;color:var(--parch);text-shadow:0 2px 0 #000a,0 0 18px #9a223044;font-weight:800}
