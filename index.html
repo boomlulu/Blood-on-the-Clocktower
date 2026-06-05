@@ -23,11 +23,11 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   min-height:100vh;line-height:1.6;padding-bottom:90px;
 }
-header{text-align:center;padding:20px 16px 8px}
-header .moon{font-size:30px;filter:drop-shadow(0 0 8px #c9a24b66)}
-header h1{margin:4px 0 2px;font-size:24px;letter-spacing:2px;color:var(--parch);text-shadow:0 2px 0 #000a,0 0 18px #9a223044;font-weight:800}
-header .sub{font-size:12.5px;color:var(--gold);letter-spacing:1px;margin-top:2px}
-header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
+header{text-align:center;padding:18px 16px 6px}
+header .moon{font-size:28px;filter:drop-shadow(0 0 8px #c9a24b66)}
+header h1{margin:4px 0 2px;font-size:23px;letter-spacing:2px;color:var(--parch);text-shadow:0 2px 0 #000a,0 0 18px #9a223044;font-weight:800}
+header .sub{font-size:12px;color:var(--gold);letter-spacing:1px;margin-top:2px}
+header .tag-line{font-size:11px;color:var(--muted);margin-top:5px}
 
 .tabs{position:sticky;top:0;z-index:50;display:flex;gap:6px;padding:10px;background:linear-gradient(180deg,#14100ce6,#14100cc0);backdrop-filter:blur(8px);overflow-x:auto;border-bottom:1px solid #3a2c1c;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
@@ -52,6 +52,7 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .pill[data-fac="outsider"].active{background:var(--outsider);border-color:var(--outsider);color:#fff}
 .pill[data-fac="minion"].active{background:var(--minion);border-color:var(--minion);color:#fff}
 .pill[data-fac="demon"].active{background:var(--demon);border-color:var(--demon);color:#fff}
+.pill.priv.active{background:var(--blood);border-color:var(--blood);color:#fff}
 
 .fac-group{margin:10px 0}
 .fac-head{font-size:12px;font-weight:700;letter-spacing:1px;margin:12px 0 6px;display:flex;align-items:center;gap:6px}
@@ -75,6 +76,9 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .field{margin:9px 0}
 .field .lab{font-size:12px;font-weight:800;color:var(--blood);letter-spacing:.5px;display:flex;align-items:center;gap:5px}
 .field .val{font-size:14px;color:#33291f;margin-top:2px}
+.mini-list{margin:3px 0 0;padding-left:18px;font-size:13.5px;color:#33291f}
+.mini-list li{margin:2px 0}
+.note{margin-top:8px;font-size:12.5px;color:#8a4a2a;background:#f0e0cc;border-radius:8px;padding:6px 9px;border-left:3px solid var(--minion)}
 .oneliner{margin-top:12px;padding:11px 13px;border-radius:10px;background:linear-gradient(135deg,#2a211a,#3a2c1c);color:#f0e2c2;font-size:13.5px;font-weight:600;line-height:1.65;border-left:4px solid var(--gold)}
 .oneliner .star{color:var(--gold);margin-right:5px}
 .empty-state{text-align:center;color:#9a8a6a;padding:30px 10px;font-size:14px}
@@ -85,13 +89,17 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .cfg .n{font-size:17px;display:block}
 .cfg-t{background:var(--good-bg);color:#26486b;border-color:#a9c4dd}.cfg-o{background:var(--outsider-bg);color:#1d5a4f;border-color:#9fcabf}
 .cfg-m{background:var(--minion-bg);color:#7a5012;border-color:#d8bd8a}.cfg-d{background:var(--demon-bg);color:#8a1c2c;border-color:#dba9af}
+.mod-title{text-align:center;font-size:12px;font-weight:700;color:#7a5a3a;margin-bottom:4px}
+.mod-pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:4px 0 9px}
+.mod-pill{padding:6px 11px;border-radius:18px;font-size:12.5px;font-weight:600;cursor:pointer;background:#efe0c2;border:1px solid #c9b487;color:#6b5a3a;transition:.12s}
+.mod-pill.active{background:var(--outsider);border-color:var(--outsider);color:#fff}
+.mod-summary{text-align:center;font-size:13px;color:#33291f}
+.mod-summary .big{font-size:19px;font-weight:800;color:var(--blood)}
 
-/* steps (开局三步) */
 .steps{counter-reset:s;margin:4px 0 0;padding:0;list-style:none}
 .steps li{position:relative;padding:5px 4px 5px 26px;font-size:13.5px;color:#33291f;line-height:1.55}
 .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:5px;width:18px;height:18px;border-radius:50%;background:var(--ink);color:var(--parch);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
-/* ranked causes + verify */
 .rank-list{counter-reset:r;margin:4px 0 0;padding:0;list-style:none}
 .rank-list li{position:relative;padding:7px 6px 7px 30px;font-size:13.5px;color:#33291f;border-bottom:1px dashed #c4ad7e}
 .rank-list li:last-child{border-bottom:none}
@@ -111,21 +119,27 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .box-good{background:#dbe6f0;color:#244a6b;border-left:4px solid var(--good)}
 .box-evil{background:#e9dcc4;color:#5a4424;border-left:4px solid #6b4a26}
 .box-misjudge{background:#e6dccb;color:#5a4a30;border-left:4px solid var(--muted)}
+.box-watch{background:#e3dcec;color:#473a66;border-left:4px solid #6a5a8a}
+.box-act{background:#efe0d0;color:#6a3a1a;border-left:4px solid #9a5a2a}
 .box-headline{background:linear-gradient(135deg,#2a211a,#3a2c1c);color:#f0e2c2;border-left:4px solid var(--gold);font-weight:700}
-.box-endgame{background:#f0d6d6;color:#8a1c2c;border:1px solid #d49aa0;border-left:4px solid var(--blood);box-shadow:0 0 0 1px #9a223022}
+.box-endgame{background:#f0d6d6;color:#8a1c2c;border:1px solid #d49aa0;border-left:4px solid var(--blood)}
 .ptag{font-size:11.5px;background:#d8c49a;color:#4a3a1f;padding:2px 8px;border-radius:12px;border:1px solid #bda472}
 .partners{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
 
 .combo-title{font-size:18px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .combo-tier{font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:6px;background:var(--blood);color:#fff}
 
-/* perspective toggle */
 .persp-toggle{display:flex;gap:8px;justify-content:center;margin:4px 0 10px}
 .persp-btn{flex:1;max-width:150px;padding:9px;border-radius:10px;border:1px solid #4a3a26;background:#241c14;color:#cdbb95;font-size:13.5px;font-weight:700;cursor:pointer;transition:.13s}
 .persp-btn.active[data-side="good"]{background:var(--good);color:#fff;border-color:var(--good)}
 .persp-btn.active[data-side="evil"]{background:var(--blood);color:#fff;border-color:var(--blood)}
 
-/* decision helper */
+.next-wrap{margin-top:12px;border-top:1px dashed #b39a6a;padding-top:10px}
+.next-title{font-size:12px;font-weight:800;color:var(--blood);margin-bottom:6px;letter-spacing:.5px}
+.next-btn{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border-radius:10px;border:1px solid var(--parch-edge);background:#2a211a;color:#f0e2c2;font-size:13px;font-weight:600;cursor:pointer;transition:.12s}
+.next-btn:active{transform:scale(.99)}
+.next-btn .ar{color:var(--gold);margin-right:6px}
+
 .q-card{margin:11px 0}
 .q-label{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;gap:7px;align-items:center}
 .q-num{width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--parch);font-size:12px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
@@ -136,9 +150,10 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .endgame-card .opt.active[data-v="y"]{background:var(--blood);border-color:var(--blood);color:#fff}
 .gen-btn{display:block;width:100%;margin:18px 0 6px;padding:14px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(180deg,var(--blood2),var(--blood));color:#fff;font-size:16px;font-weight:800;letter-spacing:2px;box-shadow:0 6px 18px #9a223055}
 .gen-btn:active{transform:translateY(1px)}
+.copy-btn{display:block;width:100%;margin:12px 0 0;padding:12px;border:1px solid var(--gold);border-radius:11px;background:#2a211a;color:var(--gold);font-size:14px;font-weight:700;cursor:pointer}
+.copy-btn:active{transform:translateY(1px)}
 .result-title{font-size:16px;font-weight:800;color:var(--gold);text-align:center;margin:6px 0 2px;letter-spacing:1px}
 
-/* night order */
 .toggle-row{display:flex;gap:8px;justify-content:center;margin:6px 0 14px}
 .toggle-btn{flex:1;max-width:160px;padding:11px;border-radius:11px;border:1px solid #4a3a26;background:#241c14;color:#cdbb95;font-size:14px;font-weight:700;cursor:pointer;transition:.13s}
 .toggle-btn.active{background:linear-gradient(180deg,var(--blood2),var(--blood));color:#fff;border-color:var(--blood2)}
@@ -150,13 +165,16 @@ header .tag-line{font-size:11px;color:var(--muted);margin-top:6px}
 .step-arrow{color:#9a8a6a;font-size:13px;transition:.2s}
 .night-step.open .step-arrow{transform:rotate(90deg)}
 .step-tip{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:13.5px;color:#3a2c1c}
-.night-step.open .step-tip{max-height:260px}
+.night-step.open .step-tip{max-height:300px}
 .night-step.special{background:linear-gradient(180deg,#2a211a,#1d1712);color:var(--parch);border-color:#4a3a26}
 .night-step.special .step-name{color:var(--gold)}
 .night-step.special .step-num{background:var(--gold);color:#241c14}
 .night-step.special .step-tip{color:#d8c8a8}
 .step-why{display:block;margin-top:5px;font-size:12.5px;color:var(--blood);font-weight:600}
 .night-step.special .step-why{color:var(--gold)}
+
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--parch);padding:10px 18px;border-radius:20px;font-size:13.5px;font-weight:700;box-shadow:0 6px 18px #000a;opacity:0;pointer-events:none;transition:.25s;z-index:200;border:1px solid var(--gold)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;line-height:1.7}
 </style>
@@ -167,7 +185,7 @@ footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;lin
   <div class="moon">🌙</div>
   <h1>卡卡利科夜未眠</h1>
   <div class="sub">血染钟楼自制剧本 · 实战决策助手</div>
-  <div class="tag-line">30 秒，给你一个更高胜率的「现在该干什么」</div>
+  <div class="tag-line">30 秒：现在最该做什么、今天该票谁</div>
 </header>
 
 <nav class="tabs" id="tabs">
@@ -181,17 +199,19 @@ footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;lin
 <!-- TAB1 我的角色 -->
 <section class="panel active" id="tab-role">
   <div class="hint">选人数看配置 → 选角色，拿到「胜率核心 + 开局三步」</div>
-  <div class="section-title">本局人数</div>
+  <div class="section-title">本局人数 &amp; 外来者修正</div>
   <div class="pill-row" id="countRow"></div>
   <div class="config-strip" id="configStrip"></div>
+  <div class="card mod-card" id="outsiderMod"></div>
   <div class="section-title">选择你的角色</div>
+  <div class="pill-row" id="charFilter"></div>
   <div id="charPicker"></div>
   <div id="roleDetail"><div class="card"><div class="empty-state"><span class="big">🎴</span>选一个角色，查看开局三步</div></div></div>
 </section>
 
 <!-- TAB2 当前局势 -->
 <section class="panel" id="tab-situation">
-  <div class="hint">选局势 → 优先怀疑机制排序 + 验证方法 + 现在该做/不该做</div>
+  <div class="hint">选局势 → 机制排序+验证 + 该做/不该做 + 一键带入</div>
   <div class="persp-toggle">
     <button class="persp-btn active" data-side="good">😇 我是善良方</button>
     <button class="persp-btn" data-side="evil">😈 我是邪恶方</button>
@@ -202,14 +222,14 @@ footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;lin
 
 <!-- TAB3 组合反制 -->
 <section class="panel" id="tab-combo">
-  <div class="hint">高胜率核心邪恶组合 · 识别信号 + 双向打法</div>
+  <div class="hint">高胜率核心邪恶组合 · 识别信号 + 双向打法 + 今天怎么演</div>
   <div class="pill-row" id="comboRow"></div>
   <div id="comboDetail"><div class="card"><div class="empty-state"><span class="big">⚔️</span>选一个邪恶组合</div></div></div>
 </section>
 
 <!-- TAB4 今天怎么打 -->
 <section class="panel" id="tab-today">
-  <div class="hint">回答几个问题 → 生成今日处决倾向与行动清单</div>
+  <div class="hint">回答几个问题 → 主线/次线/暂缓 + 可处决/不处决/先观察</div>
   <div id="questionList"></div>
   <div id="endgameToggle"></div>
   <button class="gen-btn" id="genBtn">⚡ 生成今日建议</button>
@@ -218,7 +238,7 @@ footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;lin
 
 <!-- TAB5 夜晚顺序 -->
 <section class="panel" id="tab-night">
-  <div class="hint">点击步骤展开：这一步发生什么 + 它为何影响你的判断</div>
+  <div class="hint">点击步骤：这一步发生什么 + 它为何影响你的判断</div>
   <div class="toggle-row">
     <button class="toggle-btn active" data-night="first">🌑 首个夜晚</button>
     <button class="toggle-btn" data-night="other">🌙 其他夜晚</button>
@@ -226,297 +246,260 @@ footer{text-align:center;font-size:11px;color:#5a4a36;padding:10px 16px 30px;lin
   <div id="nightList"></div>
 </section>
 
+<div class="toast" id="toast"></div>
 <footer>
-  剧本《卡卡利科夜未眠》 作者：海伦娜 &amp; 纾 · 实战决策助手 v2<br>
-  所有数据用 JS 对象数组维护，方便增改
+  剧本《卡卡利科夜未眠》 作者：海伦娜 &amp; 纾 · 实战决策助手 v3<br>
+  单文件 · 数据用 JS 对象数组维护，方便增改
 </footer>
 
 <script>
 /* ===================== 数据层 ===================== */
 const CONFIG={7:[5,0,1,1],8:[5,1,1,1],9:[5,2,1,1],10:[7,0,2,1],11:[7,1,2,1],12:[7,2,2,1],13:[9,0,3,1],14:[9,1,3,1],15:[9,2,3,1]};
-const FAC={
-  townsfolk:{label:'镇民 · 善良',dot:'#3b6ea5'},
-  outsider:{label:'外来者 · 善良',dot:'#2f8f7f'},
-  minion:{label:'爪牙 · 邪恶',dot:'#c47a1e'},
-  demon:{label:'恶魔 · 邪恶',dot:'#a8253a'}
-};
+const FAC={townsfolk:{label:'镇民 · 善良',dot:'#3b6ea5'},outsider:{label:'外来者 · 善良',dot:'#2f8f7f'},minion:{label:'爪牙 · 邪恶',dot:'#c47a1e'},demon:{label:'恶魔 · 邪恶',dot:'#a8253a'}};
 
-/* 角色卡：胜率核心 / 开局三步 / 何时公开 / 最怕 / 一句话 */
+/* 角色卡 */
 const CHARACTERS=[
-/* 镇民 */
 {name:'私家侦探',fac:'townsfolk',key:1,tagline:'本板最危险、最易被针对的善良角色',
  core:'别早跳，活到中期，你的信息能拆夜间行动链。',
  steps:['首夜查疑似夜间行动位或强发言玩家','第一天不公开身份，只找一个可信中转位私聊','第二天起对比他人声称的夜间目标，抓矛盾'],
- when:'中后期、且已拿到能锁人的目标链时才公开。',
+ when:'中后期、且已拿到能锁人的目标链时才公开。',talkTo:['执笔人','可信死亡玩家','战略专家'],
  fear:'恶魔白天猜中你直接死、机械姬偷你、裁缝混淆死亡线。',
  one:'你不是用来第一天跳身份的，你是用来中期拆谎的。'},
 {name:'树先生',fac:'townsfolk',key:1,tagline:'角色数学定位位，外来者算 4',
- core:'你靠长期积累缩坑，外来者一律算 4，是找外来者的关键。',
+ core:'靠长期积累缩坑，外来者一律算 4，是找外来者的关键。',
  steps:['首夜围绕一个核心玩家选（A+B）','之后两晚换人对比（A+C、B+C）反推每人名字数','发现外来者倾向先私下报可信好人，绝不公开'],
- when:'中期、且有具体数字链能指认时；外来者信息始终私下走。',
+ when:'中期、且有具体数字链能指认时；外来者信息始终私下走。',talkTo:['战略专家','伊文','可信中转位'],note:'不要全场公开外来者线索，小心帮方古找目标。',
  fear:'机械姬首夜偷你并中毒、方古利用你公开的外来者。',
  one:'围绕同一人做差值，外来者信息私下报，别喂方古。'},
 {name:'战略专家',fac:'townsfolk',key:1,tagline:'三段式逻辑核心，连续三晚缩坑',
  core:'选人有层次，三晚的阵营/类型/距离信息才有解。',
  steps:['首日公开选三人：怀疑/争议/信任各一','第一晚拿“是否同阵营”，先别下死结论','第二三晚拿类型数量、距恶魔距离，结合座位缩坑'],
- when:'选人必须首日公开，但每段结论分晚释放、配合可信位交叉。',
+ when:'选人必须首日公开，但每段结论分晚释放、配合可信位交叉。',talkTo:['树先生','私家侦探','伊文'],
  fear:'机械姬优先偷你/毒你，三晚信息自相矛盾。',
  one:'三人选得有层次，别全好人或全狼坑。'},
 {name:'执笔人',fac:'townsfolk',key:1,tagline:'事件验证位，专破机制迷雾',
  core:'问得越具体越值钱，验证“机制是否发生”而非“谁是恶魔”。',
  steps:['第一天先观察，攒一个值得验证的具体事件','白天问机制事件（昨夜A选B / 方古是否转生）','拿到“纯属虚构”就锁定有人在撒谎'],
- when:'验证到关键结论随时可公开，问题质量决定你的强度。',
+ when:'验证到关键结论随时可公开，问题质量决定你的强度。',talkTo:['私家侦探','桑尼','可信中转位'],
  fear:'被说书人欺骗时，下个夜晚你可能死亡。',
  one:'问事件别问废话，验证机制是否发生。'},
 {name:'军火商',fac:'townsfolk',key:1,tagline:'终盘斩杀位，炸死非镇民',
  core:'火药分布越保密越值钱，引爆炸的是非镇民不只是邪恶。',
  steps:['前期低调，每夜*放一个新目标，覆盖恶魔/爪牙/外来者嫌疑','绝不公开放过谁，等信息位帮你缩非镇民圈','攒到 2-3 个高疑似非镇民再考虑引爆'],
- when:'几乎不公开，直到引爆或身份即将暴露的残局。',
+ when:'几乎不公开，直到引爆或身份即将暴露的残局。',talkTo:['私家侦探','战略专家','树先生'],
  fear:'机械姬偷你、引爆误炸亚历克斯/外来者。',
  one:'别早爆，等信息位给目标。'},
 {name:'桑尼',fac:'townsfolk',key:1,tagline:'能让恶魔醉酒，猜错会死人',
  core:'精准比勤快重要，猜中让恶魔醉酒，猜错额外死一人。',
  steps:['首夜不行动（非首夜才猜），先观察恶魔威胁谁','等信息位给出恶魔刀法趋势再猜','优先猜强信息位/刚报关键线索的人'],
- when:'不主动暴露，猜中后私下告知好人。',
+ when:'不主动暴露，猜中后私下告知好人。',talkTo:['私家侦探','执笔人'],
  fear:'裁缝藏死让你误以为没猜中、连续猜错拖死好人。',
  one:'别乱猜，中后期信息够了再大胆猜。'},
 {name:'莫奈',fac:'townsfolk',key:1,tagline:'一次性角色变更控制位',
  core:'乱用会打乱好人信息链，要对高威胁邪恶角色出手。',
  steps:['前期别动，先攒邪恶角色概率判断','锁定高威胁邪恶（裁缝/机械姬/裁决使）再出手','出手当晚记录时间点，区分变化前后信息'],
- when:'通常不公开，必要时只对可信位说出手对象与时间。',
+ when:'通常不公开，必要时只对可信位说出手对象与时间。',talkTo:['伊文','执笔人'],
  fear:'乱出手反而毁掉好人信息链。',
  one:'别乱变，先确认邪恶概率，出手必记时间点。'},
 {name:'易容师',fac:'townsfolk',key:1,tagline:'被动反恶魔，让恶魔误判',
  core:'你活着恶魔就一直误认自己角色，别急着死或暴露。',
  steps:['隐藏身份，让恶魔多错几晚刀法','观察谁的刀法/行为不合理，反推恶魔','必要时只给一个可信好人留底'],
- when:'尽量不公开，你死亡会让恶魔恢复正确打法。',
+ when:'尽量不公开，你死亡会让恶魔恢复正确打法。',talkTo:['可信中转位'],
  fear:'过早死亡，恶魔拿回真实角色。',
  one:'别早死，活着就是让恶魔犯错。'},
 {name:'熊猫饲养员',fac:'townsfolk',key:1,tagline:'爪牙定位位 + 一次性偏转保护',
  core:'你首夜锁一个爪牙的角色，结合座位慢慢锁到具体人。',
  steps:['首夜选左/右，记住该方向最近爪牙的角色','第一天别喊“我知道有某爪牙”，会被“熊猫”盯上','结合座位/发言/投票慢慢锁那名爪牙'],
- when:'高威胁爪牙(机械姬/裁缝)可早点私下报可信位。',
+ when:'高威胁爪牙(机械姬/裁缝)可早点私下报可信位。',talkTo:['可信信息位','私家侦探'],
  fear:'机械姬偷/毒你、被“熊猫”反向利用。',
  one:'你知道的是方向最近爪牙的角色，不是具体谁。'},
 {name:'拜花童',fac:'townsfolk',key:0,tagline:'用处决死亡建立可信链',
  core:'围绕处决死亡建可信链，能绕开裁缝对夜死的干扰。',
  steps:['前期不公开，等有争议玩家被处决','夜里*给那个被处决玩家送花','他若善良会反馈，借此确认“昨天处决错了”'],
- when:'送花产生可信反馈后，可考虑公开。',
+ when:'送花产生可信反馈后，可考虑公开。',talkTo:['被处决的可信好人'],
  fear:'送花无反馈时误判（对方非善良/没理解/你中毒）。',
  one:'把花送给争议最大的被处决好人。'},
 {name:'伊文',fac:'townsfolk',key:0,tagline:'拆伪装位，越晚信息越多',
  core:'越晚用拿到的不在场角色越多，专拆恶魔/机械姬伪装。',
  steps:['第一天先别用，攒到第二三天','拜访说书人拿不在场角色（含恶魔伪装）','用不在场角色拆某人声称身份的真假'],
- when:'拿到信息后拆伪装结论可公开。',
+ when:'拿到信息后拆伪装结论可公开。',talkTo:['莫奈','树先生','战略专家'],
  fear:'太晚用被刀掉、信息冲突时硬打。',
  one:'第二三天用，专拆恶魔/机械姬伪装。'},
 {name:'狩猎天狼',fac:'townsfolk',key:0,tagline:'夜死反杀位',
  core:'死得有价值就能反带走邪恶核心，目标要能被白天解释。',
  steps:['适当表现价值引恶魔刀，但别太明显','被夜杀时冷静选反杀目标','优先反杀疑似恶魔/裁缝/机械姬'],
- when:'一般不公开，反杀后局势自然说明。',
+ when:'一般不公开，反杀后局势自然说明。',talkTo:['可信中转位'],
  fear:'误杀关键好人、被恶魔识破后避开你。',
  one:'反杀别凭情绪，目标要能被白天逻辑解释。'},
 {name:'涅槃之羽',fac:'townsfolk',key:0,tagline:'残局翻盘角色',
  core:'你是唯一存活镇民时，提名即处决，价值全在残局。',
  steps:['前期不暴露，持续记录谁镇民/谁可能死','警惕裁缝藏死影响“唯一存活镇民”判断','确认条件成立就果断提名'],
- when:'残局确认条件成立时再亮，提名要狠。',
+ when:'残局确认条件成立时再亮，提名要狠。',talkTo:['死亡好人团队'],
  fear:'裁缝藏死让你误判是否唯一存活镇民。',
  one:'条件一成立立刻提名，立处决威胁极大。'},
-/* 外来者 */
 {name:'酒鬼',fac:'outsider',key:1,tagline:'你以为自己是镇民，其实不是',
  core:'你的信息可能全错，长期对不上别硬抗。',
  steps:['按你“以为的角色”正常玩','信息长期对不上时别硬扛到底','主动提“我可能是酒鬼或被毒”，但保留发言价值'],
- when:'怀疑自己出问题时可坦白，别一次错就放弃。',
+ when:'怀疑自己出问题时可坦白，别一次错就放弃。',talkTo:['可信好人（私下报你以为的身份）'],
  fear:'被当假信息位直接处决。',
  one:'信息长期对不上别硬抗，可能是酒鬼/中毒。'},
 {name:'似卿',fac:'outsider',key:1,tagline:'最复杂的外来者，会变阵营',
  core:'你每夜*变成“上个白天最后提名者”的阵营，无人提名就变邪恶。',
  steps:['每天死死记住最后一个发起提名的人','推动让可信好人当最后提名者','绝不让“无人提名”发生'],
- when:'谨慎，阵营会变，别轻易站死队。',
+ when:'谨慎，阵营会变，别轻易站死队。',talkTo:['投票记录可信位'],
  fear:'无人提名 → 你变邪恶阵营。',
  one:'你阵营随最后提名者变，别让无人提名发生。'},
 {name:'狂热者',fac:'outsider',key:1,tagline:'被迫全投票，票型易被误读',
  core:'≥5 人存活你必须投所有提名，票不代表立场。',
  steps:['开场就准备好“我必须投所有提名”的说辞','适时向可信好人解释票不代表立场','用发言说明真实想法，别被票型定罪'],
- when:'不要早公开（你是方古转生目标），找可信位私下说。',
+ when:'不要早公开（你是方古转生目标），找可信位私下说。',talkTo:['可信好人（解释票型）'],
  fear:'票型被当乱投/邪恶、被方古盯上。',
  one:'提前声明票不代表立场，但发言要交代真实想法。'},
 {name:'亚历克斯',fac:'outsider',key:1,tagline:'独立阵营，有自己的胜利条件',
  core:'你要的是：恶魔死 + 其他外来者死 + 自己活。',
  steps:['避免过早暴露，先判断谁外来者谁恶魔','夜里*优先杀恶魔候选或其他外来者','和好人谈判，把刀口对准邪恶'],
- when:'尽量不暴露独立身份，靠行动方向换信任。',
+ when:'尽量不暴露独立身份，靠行动方向换信任。',talkTo:['可结盟的可信好人'],
  fear:'被善良方无脑处决、被军火商误炸。',
  one:'谨慎杀，杀错好人会让你和好人一起崩。'},
-/* 爪牙 */
 {name:'狂犬病患者',fac:'minion',key:1,tagline:'强节奏爪牙，制造白天混乱',
  core:'你逼人白天提名处决，制造混乱比直接杀更值钱。',
  steps:['首夜选强发言/受信任/有信息未公开的核心好人','让他次日被迫提名，行为显得异常','配合恶魔刀：夜选A、恶魔刀B、A被迫推C，一天三条线'],
- when:'永远隐藏，暗中操作。',
+ when:'永远隐藏，暗中操作。',fakeClaim:['普通镇民','被动型角色','别让人看出你在控提名节奏'],
  fear:'私家侦探查你、执笔人验证“某人是否被你影响”。',
  one:'逼好人提名让白天乱起来。'},
 {name:'师郎',fac:'minion',key:1,tagline:'明牌邪恶压力位，不死于处决',
  core:'你不死于处决，任务是制造白天噪音、给恶魔挡刀、骗处决。',
  steps:['开场就最大化发言、挑衅、绑定强好人','夜里选强信息位逼谄媚，让他行为变怪','诱导好人浪费一天处决你（你处决不死）'],
- when:'你本就明牌，主动制造压力，别帮好人理逻辑。',
+ when:'你本就明牌，主动制造压力，别帮好人理逻辑。',fakeClaim:['明牌邪恶，无需伪装，专注制造白天噪音'],
  fear:'存活邪恶多于善良时你失去能力。',
  one:'明牌拖时间骗处决，配冢中枯骨当复活保险。'},
 {name:'机械姬',fac:'minion',key:1,tagline:'最强爪牙之一，偷能力 + 中毒',
  core:'你首夜偷强能力且被视为该角色，原主中毒报错。',
  steps:['首夜偷优先级：私家侦探>树先生>战略专家>伊文/执笔人>军火商','原主中毒报错，你顶着真身份别急着乱报','建“部分正确部分误导”的假信息链'],
- when:'可大胆跳偷来的身份（说书人视你为该角色，更难拆）。',
+ when:'可大胆跳偷来的身份（说书人视你为该角色，更难拆）。',fakeClaim:['优先伪装成你偷到的身份','若偷到信息位，用部分准确信息建立可信度','不要急着打原主，让原主继续报错'],
  fear:'伊文拆不在场、执笔人验证、私家侦探查、真信息位持续不对劲被识破。',
  one:'偷强信息位，原主报错，你顶真身份建假逻辑。'},
 {name:'裁缝',fac:'minion',key:1,tagline:'最强节奏扰乱位，藏死',
  core:'藏对关键夜比永远藏更强，你一死全部死亡会瞬间爆出。',
  steps:['首夜不行动（非首夜才提前知谁会死）','前期藏 1 次造平安夜，让好人盘“恶魔是否被醉”','中期藏关键好人，让尸体继续发言'],
- when:'永远隐藏，你死亡会公布所有藏死被复盘。',
+ when:'永远隐藏，你死亡会公布所有藏死被复盘。',fakeClaim:['伊文','拜花童','执笔人','低验证度信息位'],
  fear:'执笔人问“昨夜是否有人死亡未公布”、你一死信息全爆。',
  one:'别乱藏，藏关键夜：平安夜 → 关键好人 → 压残局。'},
-/* 恶魔 */
 {name:'小恶魔',fac:'demon',key:1,tagline:'最稳定经典恶魔，可自杀传魔',
  core:'被信息链锁住时可自杀传魔保命，最佳接班是机械姬。',
  steps:['前期装弱信息位/可解释位，发言中庸','被私家侦探/树先生/战略专家/伊文锁住别硬撑','夜里自杀传魔给机械姬，配裁缝藏自杀信息'],
- when:'不主动暴露，传魔后以“好人信息位”继续藏。',
+ when:'不主动暴露，传魔后以“好人信息位”继续藏。',fakeClaim:['伊文','执笔人','拜花童','桑尼'],note:'如果被强锁，准备夜里自杀传魔。',
  fear:'私家侦探/树先生/战略专家/伊文信息链锁定。',
  one:'被锁别硬撑，自杀传魔给机械姬。'},
 {name:'方古',fac:'demon',key:1,tagline:'最有操作空间，找外来者转生',
  core:'你的目标不是单纯杀人，是找外来者中期转生。',
  steps:['前期别急转，先看谁行为像外来者（投票/阵营摇摆/信息异常）','制造外来者数量争议(机械姬-1/树先生+1/方古+1)','原方古被怀疑前后杀外来者转生，配裁缝藏死'],
- when:'接近外来者圈伪装；转生后新方古低调让好人追旧线。',
+ when:'接近外来者圈伪装；转生后新方古低调让好人追旧线。',fakeClaim:['外来者相关角色','酒鬼嫌疑','信息不稳定的镇民'],note:'靠近外来者圈，但别表现得太想找外来者。',
  fear:'树先生找外来者、执笔人验证“是否已转生”、外来者不公开。',
  one:'先找准外来者再中期转，把转生伪装成普通夜死。'},
 {name:'冢中枯骨',fac:'demon',key:1,tagline:'很难杀干净，会复活',
  core:'有存活爪牙你死后复活，核心是保爪牙不是保自己。',
  steps:['前期可稍大胆（有复活兜底），装易容师/狩猎天狼','绝不轻易牺牲爪牙，尤其师郎(不死于处决)','复活后引导好人盘“恶魔是否已死”'],
- when:'不主动暴露，制造“恶魔已死”错觉越多越安全。',
+ when:'不主动暴露，制造“恶魔已死”错觉越多越安全。',fakeClaim:['易容师','狩猎天狼','涅槃之羽','被动型镇民'],
  fear:'好人先清爪牙再杀魔、熊猫饲养员锁爪牙。',
  one:'保爪牙比保自己重要，死了能复活但别让爪牙死光。'},
 {name:'裁决使',fac:'demon',key:1,tagline:'高爆发恶魔，杀爪牙换额外行动',
  core:'杀爪牙能额外行动制造多死，但别浪费爪牙资源。',
  steps:['前期别首刀乱杀爪牙，装桑尼/军火商等解释死亡位','等爪牙暴露/将被处决时夜杀换额外行动','把多死伪装成桑尼猜错/狩猎天狼/军火商'],
- when:'不暴露，多死夜最好选在这些角色已有争议时。',
+ when:'不暴露，多死夜最好选在这些角色已有争议时。',fakeClaim:['桑尼','军火商','狩猎天狼','能解释死亡来源的位置'],
  fear:'好人及时处决暴露爪牙断你燃料、执笔人验证“爪牙是否被恶魔杀”。',
  one:'别早吃队友，终盘杀暴露爪牙换爆发。'}
 ];
 
-/* 当前局势：causes(机制排序+验证) / doNow / dontNow / ask / good / evil */
+/* 当前局势 */
 const SITUATIONS=[
 {name:'夜里没人死',
- causes:[
-  {c:'裁缝藏死，制造假平安夜（最优先）',v:'执笔人问“昨夜是否有人死亡但未公布”'},
-  {c:'桑尼猜中，恶魔醉酒到黄昏',v:'桑尼是否暗示猜中；昨晚恶魔目标是否是高威胁位'},
-  {c:'恶魔被莫奈/能力干扰没刀成功',v:'是否有人声称影响过恶魔行动'},
-  {c:'恶魔故意不刀（残局控票）',v:'优先级低，除非已接近残局'}],
- doNow:'记录昨晚最可能被刀的人，观察今天谁像“其实已经死了”。',
- dontNow:'不要因为 0 死就说“恶魔被控住，所以某某是好人”。',
+ causes:[{c:'裁缝藏死，制造假平安夜（最优先）',v:'执笔人问“昨夜是否有人死亡但未公布”'},{c:'桑尼猜中，恶魔醉酒到黄昏',v:'桑尼是否暗示猜中；昨晚恶魔目标是否是高威胁位'},{c:'恶魔被莫奈/能力干扰没刀成功',v:'是否有人声称影响过恶魔行动'},{c:'恶魔故意不刀（残局控票）',v:'优先级低，除非已接近残局'}],
+ doNow:'记录昨晚最可能被刀的人，观察今天谁像“其实已经死了”。',dontNow:'不要因为 0 死就说“恶魔被控住，所以某某是好人”。',
  ask:['执笔人：昨夜是否有人死亡但未公布？','私家侦探：疑似裁缝昨夜是否有选择目标？'],
- good:'优先怀疑裁缝藏死，别轻信平安夜，重点记录“该死没死”的人。',
- evil:'若你方藏死/被醉，白天主动把好人引向“桑尼猜中”或“恶魔被干扰”。'},
+ good:'优先怀疑裁缝藏死，别轻信平安夜，重点记录“该死没死”的人。',evil:'若你方藏死/被醉，白天主动把好人引向“桑尼猜中”或“恶魔被干扰”。',
+ next:{todayLabel:'0 死 + 怀疑裁缝',todayPreset:{deaths:'0',tailor:'y'},combos:['裁缝 + 任意恶魔']}},
 {name:'夜里死了两人或更多',
- causes:[
-  {c:'裁决使杀爪牙获得额外行动',v:'执笔人问“昨夜是否有爪牙被恶魔杀死”'},
-  {c:'桑尼猜错导致额外死亡',v:'是否有桑尼候选、昨晚是否有人在猜恶魔'},
-  {c:'狩猎天狼夜死反杀',v:'死者中是否有疑似狩猎天狼'},
-  {c:'亚历克斯独立杀人',v:'死者是否为外来者、是否有人得知亚历克斯'},
-  {c:'军火商引爆 / 裁缝公布此前藏死',v:'是否多名非镇民同夜死、是否刚有疑似裁缝死亡'}],
- doNow:'把多死拆成“几把刀”，逐一对上来源。',
- dontNow:'不要看到多死就认定一定是裁决使。',
+ causes:[{c:'裁决使杀爪牙获得额外行动',v:'执笔人问“昨夜是否有爪牙被恶魔杀死”'},{c:'桑尼猜错导致额外死亡',v:'是否有桑尼候选、昨晚是否有人在猜恶魔'},{c:'狩猎天狼夜死反杀',v:'死者中是否有疑似狩猎天狼'},{c:'亚历克斯独立杀人',v:'死者是否为外来者、是否有人得知亚历克斯'},{c:'军火商引爆 / 裁缝公布此前藏死',v:'是否多名非镇民同夜死、是否刚有疑似裁缝死亡'}],
+ doNow:'把多死拆成“几把刀”，逐一对上来源。',dontNow:'不要看到多死就认定一定是裁决使。',
  ask:['执笔人：昨夜是否有爪牙被恶魔杀死？','谁可能引爆火药或被反杀？'],
- good:'若多死含暴露爪牙，重点查裁决使线，别让暴露爪牙白送恶魔。',
- evil:'多死夜把锅甩给桑尼猜错/狩猎天狼/军火商，别让好人锁定裁决使。'},
+ good:'若多死含暴露爪牙，重点查裁决使线，别让暴露爪牙白送恶魔。',evil:'多死夜把锅甩给桑尼猜错/狩猎天狼/军火商，别让好人锁定裁决使。',
+ next:{todayLabel:'多死夜',todayPreset:{deaths:'2'},combos:['裁决使 + 裁缝']}},
 {name:'有人信息明显对不上',
- causes:[
-  {c:'机械姬偷能力，原主中毒报错',v:'执笔人验证“机械姬是否获得了某能力”'},
-  {c:'酒鬼（自以为镇民，信息无效）',v:'该信息位是否一直小幅偏差而非全错'},
-  {c:'慧眼识珠改了目标',v:'是否某夜多人目标集体异常'},
-  {c:'莫奈换角色 / 易容师 / 恶魔换位',v:'是否有人声称用过变更能力，结合死亡线'}],
- doNow:'对比“持续稳定”和“持续混乱”的两个同类信息位，别无脑信稳的那个。',
- dontNow:'不要一错就处决信息位；不要因信息准确就默认善良。',
+ causes:[{c:'机械姬偷能力，原主中毒报错',v:'执笔人验证“机械姬是否获得了某能力”'},{c:'酒鬼（自以为镇民，信息无效）',v:'该信息位是否一直小幅偏差而非全错'},{c:'慧眼识珠改了目标',v:'是否某夜多人目标集体异常'},{c:'莫奈换角色 / 易容师 / 恶魔换位',v:'是否有人声称用过变更能力，结合死亡线'}],
+ doNow:'对比“持续稳定”和“持续混乱”的两个同类信息位，别无脑信稳的那个。',dontNow:'不要一错就处决信息位；不要因信息准确就默认善良。',
  ask:['执笔人：机械姬是否获得了某能力？','伊文：不在场角色里有没有这个声称角色？'],
- good:'先排除机械姬/酒鬼，再决定要不要处决报错的人。',
- evil:'让好人围绕错误信息建逻辑，避开刀中毒原主，留着他继续报错。'},
+ good:'先排除机械姬/酒鬼，再决定要不要处决报错的人。',evil:'让好人围绕错误信息建逻辑，避开刀中毒原主，留着他继续报错。',
+ next:{todayLabel:'信息对不上',todayPreset:{mismatch:'y'},combos:['机械姬 + 小恶魔']}},
 {name:'有人突然强行提名',
- causes:[
-  {c:'被狂犬病患者影响（必须提名否则被处决）',v:'执笔人验证“某人是否被狂犬病患者影响”'},
-  {c:'被师郎施压',v:'是否师郎昨夜选了他'},
-  {c:'真好人有合理理由',v:'直接问他提名理由是否被迫'},
-  {c:'邪恶方带节奏',v:'看提名是否精准指向好人核心'}],
- doNow:'先问他“是不是被逼的”，再判断动机。',
- dontNow:'不要因为一个好人突然提名就直接打死他。',
+ causes:[{c:'被狂犬病患者影响（必须提名否则被处决）',v:'执笔人验证“某人是否被狂犬病患者影响”'},{c:'被师郎施压',v:'是否师郎昨夜选了他'},{c:'真好人有合理理由',v:'直接问他提名理由是否被迫'},{c:'邪恶方带节奏',v:'看提名是否精准指向好人核心'}],
+ doNow:'先问他“是不是被逼的”，再判断动机。',dontNow:'不要因为一个好人突然提名就直接打死他。',
  ask:['他本人：这次提名是不是被迫的？','执笔人：某人是否被狂犬病患者影响？'],
- good:'把“被迫提名”和“主动带节奏”分开，保护被迫的好人。',
- evil:'狂犬病患者选好人核心逼其提名，让他自毁信誉或好人内斗。'},
+ good:'把“被迫提名”和“主动带节奏”分开，保护被迫的好人。',evil:'狂犬病患者选好人核心逼其提名，让他自毁信誉或好人内斗。',
+ next:{todayLabel:'强行提名',todayPreset:{force:'y'},combos:['狂犬病患者 + 裁缝']}},
 {name:'恶魔疑似死了但游戏没结束',
- causes:[
-  {c:'冢中枯骨有存活爪牙，已复活',v:'清点还有几个爪牙活着'},
-  {c:'方古已成功转生、恶魔换人',v:'执笔人问“方古是否已成功转化”'},
-  {c:'小恶魔自杀传魔给爪牙',v:'执笔人问“小恶魔是否传魔”'},
-  {c:'裁缝藏死制造假象 / 之前杀错',v:'是否有疑似裁缝在场；复盘那次处决依据'}],
- doNow:'立刻清点存活爪牙，并重新评估“谁可能是新恶魔”。',
- dontNow:'不要以为恶魔已死就松懈，讨论会偏离真实威胁。',
+ causes:[{c:'冢中枯骨有存活爪牙，已复活',v:'清点还有几个爪牙活着'},{c:'方古已成功转生、恶魔换人',v:'执笔人问“方古是否已成功转化”'},{c:'小恶魔自杀传魔给爪牙',v:'执笔人问“小恶魔是否传魔”'},{c:'裁缝藏死制造假象 / 之前杀错',v:'是否有疑似裁缝在场；复盘那次处决依据'}],
+ doNow:'立刻清点存活爪牙，并重新评估“谁可能是新恶魔”。',dontNow:'不要以为恶魔已死就松懈，讨论会偏离真实威胁。',
  ask:['执笔人：方古是否已转生 / 小恶魔是否传魔？','还有几个爪牙活着？'],
- good:'先清爪牙断冢中枯骨复活，盯突然变安全的外来者(方古)。',
- evil:'制造越多“恶魔为何没死”的错误解释，复活/转生越安全。'},
+ good:'先清爪牙断冢中枯骨复活，盯突然变安全的外来者(方古)。',evil:'制造越多“恶魔为何没死”的错误解释，复活/转生越安全。',
+ next:{todayLabel:'怀疑恶魔换人或复活',todayPreset:{swap:'y'},combos:['方古 + 外来者','冢中枯骨 + 师郎']}},
 {name:'外来者过早公开',
- causes:[
-  {c:'真外来者不懂藏身份',v:'看他是否新手、行为是否自然'},
-  {c:'邪恶伪装外来者制造数量争议',v:'核对外来者数量(机械姬-1/树先生+1/方古+1)'},
-  {c:'方古钓鱼引外来者现身',v:'谁在积极追问外来者是谁'},
-  {c:'亚历克斯试探场面',v:'是否有独立阵营杀人迹象'}],
- doNow:'把外来者信息收进可信小圈，别全场广播。',
- dontNow:'不要全场公开外来者名单（等于帮方古找转生目标）。',
+ causes:[{c:'真外来者不懂藏身份',v:'看他是否新手、行为是否自然'},{c:'邪恶伪装外来者制造数量争议',v:'核对外来者数量(机械姬-1/树先生+1/方古+1)'},{c:'方古钓鱼引外来者现身',v:'谁在积极追问外来者是谁'},{c:'亚历克斯试探场面',v:'是否有独立阵营杀人迹象'}],
+ doNow:'把外来者信息收进可信小圈，别全场广播。',dontNow:'不要全场公开外来者名单（等于帮方古找转生目标）。',
  ask:['外来者数量是否对得上？','谁在积极追问外来者是谁？（可能是方古）'],
- good:'外来者私下报可信好人，重点保护他们不被方古转生。',
- evil:'方古借数量争议浑水摸鱼，别急着转，先确认谁是真外来者。'},
+ good:'外来者私下报可信好人，重点保护他们不被方古转生。',evil:'方古借数量争议浑水摸鱼，别急着转，先确认谁是真外来者。',
+ next:{todayLabel:'外来者公开',todayPreset:{outsider:'y'},combos:['方古 + 外来者']}},
 {name:'表面存活人数和局势不匹配',
- causes:[
-  {c:'裁缝隐藏死亡，死人被视为存活',v:'执笔人问“是否存在被隐藏死亡玩家”'},
-  {c:'被隐藏的信息位还在继续发言',v:'谁的发言像“已经知道自己死了”'},
-  {c:'多个夜死一直未公布',v:'复盘每夜“该死没死”的人'}],
- doNow:'重建“死亡怀疑表”，按“可能已死”重新算真实存活数。',
- dontNow:'不要用表面存活人数去判断胜利临界点。',
+ causes:[{c:'裁缝隐藏死亡，死人被视为存活',v:'执笔人问“是否存在被隐藏死亡玩家”'},{c:'被隐藏的信息位还在继续发言',v:'谁的发言像“已经知道自己死了”'},{c:'多个夜死一直未公布',v:'复盘每夜“该死没死”的人'}],
+ doNow:'重建“死亡怀疑表”，按“可能已死”重新算真实存活数。',dontNow:'不要用表面存活人数去判断胜利临界点。',
  ask:['执笔人：是否存在被隐藏死亡的玩家？','谁的状态像“其实已经死了”？'],
- good:'怀疑裁缝藏死，中后期用军火商/处决逼出真实人数。',
- evil:'裁缝继续压人数，终盘突然公布制造邪恶优势票型。'}
+ good:'怀疑裁缝藏死，中后期用军火商/处决逼出真实人数。',evil:'裁缝继续压人数，终盘突然公布制造邪恶优势票型。',
+ next:{todayLabel:'怀疑裁缝藏死',todayPreset:{tailor:'y'},combos:['裁缝 + 任意恶魔']}}
 ];
 
-/* 组合反制：威胁点 / 识别信号 / 善良反制 / 邪恶技巧 / 常见误判 */
+/* 组合反制 */
 const COMBOS=[
 {name:'机械姬 + 小恶魔',tier:'T0.5 高胜率',
  threat:'机械姬首夜偷强身份毒原主，小恶魔被怀疑时自杀传魔给机械姬；接魔后顶着真身份极难抓。',
  signal:['某真信息位一直报错，另一个人信息异常准确','有人像拿到真实能力，但阵营行为不像好人','小恶魔候选被逼到死角后，另一个“可信信息位”突然更安全','原主的错误信息被邪恶方反复利用'],
  good:'不要只信准信息；伊文拆不在场、执笔人验证“机械姬是否偷能力”、私家侦探查疑似机械姬；小恶魔疑似传魔后重新评估机械姬候选。',
  evil:'首夜偷私家侦探/树先生/战略专家；机械姬先建可信身份，小恶魔被怀疑时自杀传魔继续以“好人信息位”存活。',
+ act:['机械姬不要急着打原主，先说“他可能是酒鬼/被干扰”','小恶魔被怀疑时不要强辩，准备传魔','邪恶队友不要一起保机械姬，要有人轻踩，避免团队感过强','把“信息准”包装成可信好人，但不要过度带队'],
  misjudge:'把中毒报错的真信息位当邪恶处决，反而帮了机械姬。'},
 {name:'裁缝 + 任意恶魔',tier:'T0 最强',
  threat:'裁缝隐藏夜死、死人被视为存活，存活人数和死亡来源全乱；配小恶魔/方古/冢中枯骨/裁决使都极强。',
  signal:['突然出现“平安夜”','有人发言像知道自己状态异常','存活人数和局势不匹配','某关键好人“还活着”却越来越边缘'],
  good:'建“死亡怀疑表”；执笔人问“昨夜是否有人死亡未公布”；私家侦探查疑似裁缝；军火商中后期放火药处理；不要单纯信存活人数。',
  evil:'别无脑全藏——前期藏 1 次造平安夜，中期藏关键好人，后期集中公布压残局。',
+ act:['0 死时引导好人盘桑尼猜中，而不是裁缝藏死','不要主动提“裁缝藏死”，让好人自己混乱','把“该死没死的人”解释成被保护、恶魔没刀中、或恶魔被醉','有人追死亡线就反问他是否忽略桑尼/狩猎天狼/亚历克斯'],
  misjudge:'看到无死亡就认为恶魔被压制。'},
 {name:'方古 + 外来者',tier:'T1 操作流',
  threat:'方古杀外来者转生，原方古死、新方古身份干净，好人追旧线已晚；外来者机制多数量难盘。',
  signal:['外来者过早公开 / 外来者数量对不上','某外来者中期突然变安全、发言变谨慎','恶魔疑似死但没结束','有人格外热衷追问“谁是外来者”'],
  good:'外来者私下报不公开；树先生外来者信息不全场公布；执笔人验证“方古是否已转生”；伊文拆恶魔伪装。',
  evil:'看谁行为像外来者而非谁跳外来者；中期转生别过早；把转生伪装成普通夜死配裁缝藏死。',
+ act:['鼓励外来者公开，但不要显得太急','把外来者数量争议说成树先生/机械姬/酒鬼造成的混乱','方古转生后，继续让好人追旧恶魔线','新方古不要突然带队，保持原来的发言风格'],
  misjudge:'过早全场公开外来者名单，帮方古精准锁定目标。'},
 {name:'冢中枯骨 + 师郎',tier:'T1 难缠',
  threat:'师郎不死于处决又明牌，是冢中枯骨天然复活保险；先杀魔会复活，先杀师郎是浪费处决。',
  signal:['处决恶魔后游戏没结束','师郎一直活着且场上爪牙难清','有人极力保师郎活着'],
  good:'先清爪牙再杀魔；熊猫饲养员锁一个爪牙角色；战略专家测类型数量找爪牙；想办法让师郎夜死或军火商处理。',
  evil:'师郎尽量活着别送死；冢中枯骨可比其他恶魔大胆一点，但绝不能让爪牙死光。',
+ act:['师郎白天大量发言挑衅，诱导好人把处决浪费在他身上','别承认爪牙身份，强调“处决师郎没用”反而拖时间','冢中枯骨被怀疑可稍硬抗，反正有复活兜底','把“恶魔没死干净”解释成杀错人/裁缝藏死，别提复活'],
  misjudge:'把宝贵处决浪费在不死于处决的师郎身上。'},
 {name:'裁决使 + 裁缝',tier:'T0 最强',
  threat:'裁决使杀爪牙额外行动制造多死，裁缝隐藏部分死亡；好人无法判断单刀/多刀/藏死爆发。',
  signal:['某夜多死且伴随暴露爪牙死亡','死亡数量忽多忽少难以解释','暴露爪牙夜里“恰好”死掉'],
  good:'白天及时处决暴露爪牙断裁决使燃料；执笔人验证“昨夜是否有爪牙被恶魔杀”；私家侦探查裁决使选择链；不要让暴露爪牙被恶魔轻松换收益。',
  evil:'别早吃爪牙，等爪牙暴露将被处决时夜杀换额外行动，裁缝藏部分爆发制造错误死亡数量。',
+ act:['暴露的爪牙别急着保，引导好人“留着他慢慢查”','多死夜把锅甩给桑尼猜错、狩猎天狼、军火商引爆','裁缝藏掉部分死亡，让好人数不清今晚到底几刀','有人盘裁决使就反问“爪牙怎么会自己人杀自己人”'],
  misjudge:'把暴露爪牙当安全废牌——其实它是裁决使的燃料。'},
 {name:'狂犬病患者 + 裁缝',tier:'T1.5 拉扯',
  threat:'狂犬病患者逼白天提名处决，裁缝藏夜死制造迷雾；好人白天夜晚两头被拉扯，专打信息型好人局。',
  signal:['有人被迫强行提名','夜里无人死或死了没公布','处决目标像被逼出来的、非自然产生','白天压力和夜晚死亡同时变模糊'],
  good:'记录异常提名；执笔人验证“某人是否被狂犬病患者影响”+“是否有藏死”；私家侦探查狂犬病患者夜间目标；别因突然提名打死好人。',
  evil:'狂犬病患者选强信息位逼其暴露，裁缝同步藏死，让好人分不清白天与夜晚的死亡来源。',
+ act:['被你逼提名的人发难时，跟着起哄说“他提名得很可疑”','把白天的强行提名包装成“他心里有鬼才急着推人”','裁缝同步藏死，让好人分不清是白天压力还是夜里死人','别承认狂犬病患者在场，把混乱都推给好人“自己乱”'],
  misjudge:'把被狂犬病患者影响而强行提名的好人当邪恶处决。'}
 ];
 
@@ -531,109 +514,116 @@ const QUESTIONS=[
  {id:'swap',label:'是否怀疑恶魔换人或复活？',opts:[{v:'y',t:'是'},{v:'n',t:'否'}]}
 ];
 
+/* 优先级仲裁信号表 */
+const SIG={
+ swap:{pri:100,name:'恶魔换人或复活',
+  line:'先查恶魔是否换人或复活：清点存活爪牙，问执笔人“方古是否转生 / 小恶魔是否传魔”。',
+  defer:'别再纠结旧恶魔线，他可能已经不是恶魔了。',
+  executeNow:['存活爪牙（断冢中枯骨复活）'],watchList:['最近突然变安全的外来者（疑似方古）'],
+  questions:['执笔人：方古是否已转生 / 小恶魔是否传魔？','还有几个爪牙活着？'],warnings:['处决了“恶魔”却没结束，多半是爪牙还活着或已转生。']},
+ deaths2:{pri:90,name:'多死夜',
+  line:'把多死拆成“几把刀”，逐一对上来源（裁决使/桑尼错/狩猎天狼/亚历克斯/军火商/裁缝）。',
+  defer:'别一口咬定是裁决使，多死来源很多。',
+  executeNow:['已暴露、将被处决的爪牙（断裁决使燃料）'],protect:['剩余信息位'],
+  questions:['执笔人：昨夜是否有爪牙被恶魔杀死？'],warnings:['多死≠裁决使，也可能是反杀/引爆/藏死爆发。']},
+ tailor:{pri:85,name:'裁缝藏死',
+  line:'按“可能已死”重算真实存活数，问执笔人是否有人死亡但未公布。',
+  defer:'先别用表面人数下结论。',
+  executeNow:['疑似裁缝（藏死嫌疑，死后会公布全部藏死）'],watchList:['发言像“其实已经死了”的人'],
+  questions:['执笔人：是否存在被隐藏死亡的玩家？'],warnings:['表面存活人数可能是假的。']},
+ mismatch:{pri:80,name:'信息被污染',
+  line:'对比“持续稳定”与“持续混乱”的同类信息位，先别处决报错那个。',
+  defer:'单个信息位报错，先别因报错直接处决。',
+  doNotExecute:['单纯报错的信息位（可能机械姬毒/酒鬼）'],watchList:['信息很准但阵营行为不好的“准信息位”'],
+  questions:['执笔人：机械姬是否获得了某能力？'],protect:['可能被机械姬毒的真信息位'],warnings:['信息准≠善良，机械姬可能真拿到能力。']},
+ force:{pri:65,name:'强行提名',
+  line:'先问他“是不是被逼的”，再判断动机，别直接打死。',
+  defer:'突然提名未必邪恶，可能被狂犬病患者逼的。',
+  executeNow:['主动精准、指向好人核心的带节奏提名者'],doNotExecute:['被迫提名、行为被迫异常的好人'],
+  questions:['执笔人：某人是否被狂犬病患者影响？'],protect:['被迫提名的好人']},
+ outsider:{pri:60,name:'外来者公开/数量争议',
+  line:'把外来者信息收进可信小圈，核对数量(机械姬-1/树先生+1/方古+1)。',
+  defer:'别全场广播外来者名单，会帮方古找目标。',
+  doNotExecute:['独立亚历克斯（误杀会乱局）'],watchList:['过早公开的外来者'],
+  questions:['外来者数量是否对得上？','谁在积极追问外来者是谁？'],protect:['外来者（防方古转生）']},
+ deaths0:{pri:55,name:'假平安夜',
+  line:'记录昨晚最可能被刀的人，优先怀疑裁缝藏死，别当成恶魔被控。',
+  defer:'别因 0 死就说“恶魔被压制”。',
+  executeNow:['疑似裁缝（藏死嫌疑，死后会公布全部藏死）'],questions:['执笔人：昨夜是否有人死亡但未公布？'],
+  protect:['已暴露的强信息位（恶魔可能补刀）'],warnings:['0 死可能是藏死/桑尼猜中，不是恶魔没刀。']},
+ shichiro:{pri:50,name:'师郎在场',
+  line:'别把处决浪费在师郎身上，记录谁被逼谄媚他。',
+  defer:'师郎不死于处决，先不碰他。',
+  doNotExecute:['师郎（不死于处决，处决=白送一天）'],watchList:['被师郎绑定、行为被迫异常的好人'],
+  protect:['被师郎绑定的好人'],warnings:['师郎若配冢中枯骨，是复活保险。']}
+};
+function activeSignals(a){
+ const keys=[];
+ if(a.swap==='y')keys.push('swap');
+ if(a.deaths==='2')keys.push('deaths2');
+ if(a.tailor==='y')keys.push('tailor');
+ if(a.mismatch==='y')keys.push('mismatch');
+ if(a.force==='y')keys.push('force');
+ if(a.outsider==='y')keys.push('outsider');
+ if(a.deaths==='0')keys.push('deaths0');
+ if(a.shichiro==='y')keys.push('shichiro');
+ return keys.map(k=>Object.assign({k},SIG[k])).sort((x,y)=>y.pri-x.pri);
+}
 function buildTodayAdvice(a){
-  const targ=[],mech=[],dont=[],ask=[],killGood=[],killBad=[],protect=[];
-  const P=(arr,...xs)=>xs.forEach(x=>{if(x&&!arr.includes(x))arr.push(x)});
-
-  if(a.deaths==='0'){
-    P(targ,'疑似裁缝'); P(mech,'裁缝藏死（假平安夜）','桑尼可能猜中、恶魔醉酒');
-    P(dont,'不要因 0 死就默认恶魔被控住，裁缝藏死优先级更高');
-    P(ask,'执笔人：昨夜是否有人死亡但未公布？'); P(protect,'已暴露的强信息位（恶魔下次可能补刀）');
-  }else if(a.deaths==='1'){
-    P(mech,'常规恶魔单刀（单死不一定是小恶魔）');
-    P(dont,'不要仅凭单死就断定恶魔类型'); P(ask,'死者生前是否握有未公开的关键信息？');
-    P(killGood,'夜间行动逻辑可疑者'); P(protect,'已暴露的信息位');
-  }else if(a.deaths==='2'){
-    P(targ,'暴露爪牙（裁决使线）'); P(mech,'裁决使杀爪牙额外行动 / 桑尼猜错 / 狩猎天狼 / 亚历克斯 / 军火商引爆 / 裁缝公布藏死');
-    P(dont,'不要只盘裁决使，多死来源很多'); P(ask,'执笔人：昨夜是否有爪牙被恶魔杀死？');
-    P(killGood,'已暴露、将被处决的爪牙（断裁决使燃料）'); P(protect,'剩余信息位');
-  }
-  if(a.mismatch==='y'){
-    P(targ,'疑似机械姬'); P(mech,'机械姬偷能力原主中毒 / 酒鬼 / 慧眼识珠 / 莫奈 / 易容师');
-    P(dont,'不要一错就处决信息位；不要因信息准确就默认善良');
-    P(ask,'执笔人：机械姬是否获得了某能力？'); P(killBad,'单纯信息报错的人（可能被机械姬毒/酒鬼）');
-    P(protect,'可能被机械姬毒的真信息位');
-  }
-  if(a.force==='y'){
-    P(targ,'狂犬病患者本体'); P(mech,'狂犬病患者逼提名 / 师郎施压');
-    P(dont,'不要因为突然提名就打死好人'); P(ask,'执笔人：某人是否被狂犬病患者影响？');
-    P(killGood,'主动精准、指向好人核心的带节奏提名者'); P(killBad,'被逼提名、行为被迫异常的好人');
-    P(protect,'被迫提名的好人');
-  }
-  if(a.outsider==='y'){
-    P(targ,'谨慎处决（防误杀独立亚历克斯）'); P(mech,'方古找外来者转生 / 外来者数量争议(机械姬-1 树先生+1 方古+1)');
-    P(dont,'不要全场公开外来者名单，帮方古找目标'); P(ask,'外来者数量是否对得上？');
-    P(protect,'外来者（防方古转生）');
-  }
-  if(a.tailor==='y'){
-    P(targ,'疑似裁缝'); P(mech,'裁缝藏死，存活人数失真');
-    P(dont,'不要信表面存活人数判断胜利临界点'); P(ask,'执笔人：是否存在被隐藏死亡玩家？');
-    P(killGood,'疑似裁缝（裁缝死会公布所有藏死）');
-  }
-  if(a.shichiro==='y'){
-    P(targ,'其他爪牙/恶魔（别碰师郎）'); P(mech,'师郎明牌不死于处决，可能是冢中枯骨复活保险');
-    P(dont,'不要把处决浪费在师郎身上，不要被他消耗白天时间'); P(ask,'记录谁被要求谄媚师郎（其行为可能被迫异常）');
-    P(killBad,'师郎（不死于处决，处决他=白送一天）'); P(protect,'被师郎绑定、行为被迫异常的好人');
-  }
-  if(a.swap==='y'){
-    P(targ,'存活爪牙 / 突然变安全的外来者'); P(mech,'冢中枯骨复活 / 方古转生 / 小恶魔传魔');
-    P(dont,'不要以为恶魔已死就松懈'); P(ask,'执笔人：方古是否已转生 / 小恶魔是否传魔？');
-    P(killGood,'存活爪牙（断冢中枯骨复活）');
-  }
-
-  let endgame=null;
-  if(a.endgame==='y'){
-    P(targ,'恶魔候选 / 暴露爪牙（收网）');
-    endgame=[
-     '要求所有人公开：声称角色 + 夜间目标 + 投票理由，别再过度隐藏',
-     '优先判断是否有裁缝藏死（真实存活人数可能更少）',
-     '优先判断恶魔是否换人（方古转生 / 小恶魔传魔 / 冢中枯骨复活）',
-     '若有似卿：必须记录每天最后提名者，控制其阵营',
-     '若有涅槃之羽：判断他是否已是唯一存活镇民、可能立即处决',
-     '若有亚历克斯：确认外来者独立胜利条件是否接近达成'];
-    P(dont,'残局不要再藏身份，信息公开速度比保命更重要');
-  }
-
-  if(!targ.length)P(targ,'信息链冲突中主动带节奏的人');
-  if(!mech.length){P(mech,'信息尚不明朗，按常规节奏推进'); P(dont,'前期不要把强身份全公开'); P(ask,'建立身份/夜死/提名投票/目标行动 四张表'); P(protect,'核心信息位（私家侦探、战略专家、树先生）');}
-  if(!killGood.length)P(killGood,'信息链冲突中主动带节奏的人');
-  if(!killBad.length)P(killBad,'单纯信息报错、行为被迫异常的人');
-  if(!protect.length)P(protect,'核心信息位（私家侦探、战略专家、树先生）');
-  return {targ,mech,dont,ask,killGood,killBad,protect,endgame};
+ const active=activeSignals(a);
+ const executeNow=[],doNotExecute=[],watchList=[],protect=[],questions=[],warnings=[];
+ const P=(arr,xs)=>{(xs||[]).forEach(x=>{if(x&&arr.indexOf(x)<0)arr.push(x);});};
+ active.forEach(s=>{P(executeNow,s.executeNow);P(doNotExecute,s.doNotExecute);P(watchList,s.watchList);P(protect,s.protect);P(questions,s.questions);P(warnings,s.warnings);});
+ if(a.deaths==='1'){P(executeNow,['夜间行动逻辑可疑者']);P(protect,['已暴露的信息位']);P(questions,['死者生前是否握有未公开的关键信息？']);}
+ const mainline=active.length?active[0].line:'信息尚不明朗，按常规节奏推进，先把四张表（身份/夜死/提名投票/目标行动）建起来。';
+ const secondary=active.slice(1,3).map(s=>s.name);
+ const defer=active.slice(3).map(s=>s.defer);
+ let endgame=null;
+ if(a.endgame==='y'){
+  endgame=['要求所有人公开：声称角色 + 夜间目标 + 投票理由，别再过度隐藏','优先判断是否有裁缝藏死（真实存活人数可能更少）','优先判断恶魔是否换人（方古转生 / 小恶魔传魔 / 冢中枯骨复活）','若有似卿：必须记录每天最后提名者，控制其阵营','若有涅槃之羽：判断他是否已是唯一存活镇民、可能立即处决','若有亚历克斯：确认外来者独立胜利条件是否接近达成'];
+  P(executeNow,['恶魔候选 / 暴露爪牙（收网）']);P(warnings,['残局：信息公开速度比保命更重要。']);
+ }
+ if(!executeNow.length)executeNow.push('信息链冲突中主动精准带节奏的人');
+ if(!doNotExecute.length)doNotExecute.push('单纯信息报错、行为被迫异常的人');
+ if(!watchList.length)watchList.push('最近突然变安全、发言风格突变的人');
+ if(!protect.length)protect.push('核心信息位（私家侦探、战略专家、树先生）');
+ if(!questions.length)questions.push('先建身份/夜死/提名投票/目标行动 四张表');
+ if(!warnings.length)warnings.push('别只凭单条信息或死亡数量下结论。');
+ return {mainline,secondary,defer,executeNow,doNotExecute,watchList,protect,questions,warnings,endgame};
 }
 
-/* 夜晚顺序：name / fac / tip(发生什么) / why(为何影响判断) */
+/* 夜晚顺序 */
 const NIGHT_FIRST=[
  {n:'夜晚开始',fac:'special',tip:'所有人闭眼，说书人按首夜顺序唤醒；不在场/失效/条件不满足的直接跳过。'},
- {n:'莫奈',fac:'townsfolk',tip:'限一次能力，首夜一般不急用，留到确认高威胁邪恶后再变。',why:'莫奈在最前，意味着它能在任何人行动前改写一个角色——之后的所有信息都要带上“是否被莫奈动过”。'},
+ {n:'莫奈',fac:'townsfolk',tip:'限一次能力，首夜一般不急用，留到确认高威胁邪恶后再变。',why:'莫奈在最前，能在任何人行动前改写一个角色——之后所有信息都要带上“是否被莫奈动过”。'},
  {n:'熊猫饲养员',fac:'townsfolk',tip:'选左/右，得知该方向最近爪牙的角色；那名爪牙得知自己是“熊猫”，会替你吃第一个作用于你的能力。',why:'它早于爪牙/恶魔信息，所以某个爪牙首夜就被“点名”，邪恶方必须当晚准备说辞。'},
  {n:'爪牙信息',fac:'minion',tip:'爪牙互相确认身份，并得知恶魔是谁。'},
  {n:'恶魔信息',fac:'demon',tip:'恶魔得知爪牙并获得伪装；若易容师在场，恶魔会误以为自己是其他不在场恶魔。',why:'易容师在此生效，所以恶魔从第一夜起就可能用错打法——好人能借“刀法不合理”反推。'},
  {n:'机械姬',fac:'minion',tip:'选一名非恶魔玩家偷其能力，原主中毒，被视为该角色。优先偷私家侦探/树先生/战略专家。',why:'机械姬在多数信息位之前行动，原主当晚即中毒，所以首夜起就可能有“真信息位在报错”。'},
- {n:'师郎',fac:'minion',tip:'选一名玩家逼其谄媚到下个黄昏，否则可能死亡；你明牌且不死于处决。'},
- {n:'狂犬病患者',fac:'minion',tip:'选一名玩家，逼他次日必须提名并处决一人，否则可能被处决。',why:'它在夜里就锁定了次日的“强行提名者”，所以白天的异常提名未必是邪恶，可能只是被狂犬病患者点了。'},
- {n:'树先生',fac:'townsfolk',tip:'选两名活人得名字数之和，外来者算 4；围绕同一核心做对比方便反推。'},
+ {n:'师郎',fac:'minion',tip:'选一名玩家逼其谄媚到下个黄昏，否则可能死亡；你明牌且不死于处决。',why:'它制造次日白天的行为异常。被师郎逼谄媚的人不一定邪恶，可能只是被迫。'},
+ {n:'狂犬病患者',fac:'minion',tip:'选一名玩家，逼他次日必须提名并处决一人，否则可能被处决。',why:'它在夜里就锁定了次日的“强行提名者”，所以白天的异常提名未必是邪恶，可能只是被点了。'},
+ {n:'树先生',fac:'townsfolk',tip:'选两名活人得名字数之和，外来者算 4；围绕同一核心做对比方便反推。',why:'它的信息要连成数字链才有价值。若被机械姬偷或中毒，首夜数字就污染整条逻辑。'},
  {n:'私家侦探',fac:'townsfolk',tip:'选一人查他今晚选择的目标；恶魔知道你在场，别早跳。',why:'私家侦探排在末端，能看到此前多数夜间选择的结果——是拆谎关键，但也因此最被恶魔忌惮。'},
  {n:'天亮',fac:'special',tip:'公布夜间死亡（裁缝可隐藏），进入白天讨论与提名处决。',why:'天亮公布的死亡可能被裁缝藏掉——“没死”不等于真没死，天亮人数不一定可信。'}
 ];
 const NIGHT_OTHER=[
  {n:'夜晚开始',fac:'special',tip:'闭眼，按其他夜顺序结算；带条件、限一次或已失效的角色，条件不满足时跳过。'},
- {n:'莫奈',fac:'townsfolk',tip:'若还没用，可针对高威胁邪恶（裁缝/裁决使/机械姬）出手，记录时间点。'},
+ {n:'莫奈',fac:'townsfolk',tip:'若还没用，可针对高威胁邪恶（裁缝/裁决使/机械姬）出手，记录时间点。',why:'它能在任何人行动前改写一个角色，之后所有信息都要带上“是否被莫奈动过”。'},
  {n:'桑尼',fac:'townsfolk',tip:'猜恶魔首次选择的玩家；猜中恶魔醉酒到黄昏，猜错额外死一人。',why:'桑尼排在恶魔之前，猜的是“恶魔首次选择”；猜中后这一夜的死亡结果可能整体异常，别只按常规盘。'},
- {n:'师郎',fac:'minion',tip:'继续选人逼谄媚；当存活邪恶多于善良时你失去能力。'},
- {n:'狂犬病患者',fac:'minion',tip:'继续选人逼其次日提名处决，制造白天压力。'},
+ {n:'师郎',fac:'minion',tip:'继续选人逼谄媚；当存活邪恶多于善良时你失去能力。',why:'它制造次日白天的行为异常。被师郎逼谄媚的人不一定邪恶，可能只是被迫。'},
+ {n:'狂犬病患者',fac:'minion',tip:'继续选人逼其次日提名处决，制造白天压力。',why:'它影响次日提名行为。突然强行提名的人不一定是邪恶，可能是被迫行动。'},
  {n:'小恶魔',fac:'demon',tip:'选一人杀死；若以此自杀，一名爪牙变成小恶魔（最佳传给机械姬）。',why:'恶魔在中段行动，桑尼/莫奈已先生效——所以恶魔的刀有时会“没刀中”，未必是它没动。'},
  {n:'方古',fac:'demon',tip:'选一人杀死；杀外来者可转生为邪恶方古（限一次，原方古死）。',why:'方古杀外来者会“原方古死、新方古生”，天亮看到一个死亡，可能正是恶魔在换人。'},
  {n:'冢中枯骨',fac:'demon',tip:'选一人杀死；有存活爪牙则你死后复活。',why:'它的复活依赖存活爪牙——所以“处决了恶魔却没结束”往往是爪牙还活着。'},
  {n:'裁决使',fac:'demon',tip:'选一人杀死；杀死爪牙可额外行动一次（一晚多死）。',why:'裁决使能在一夜内连动两刀，多死夜不一定是多个角色，也可能是它一个人。'},
  {n:'亚历克斯',fac:'outsider',tip:'独立阵营，选一人杀死；被杀的外来者会得知你是亚历克斯。',why:'亚历克斯排在恶魔之后，同一夜的额外死亡可能来自它而非恶魔。'},
- {n:'军火商',fac:'townsfolk',tip:'选一名此前没放过的活人放火药；限一次可引爆，炸死所有被放火药的非镇民。'},
+ {n:'军火商',fac:'townsfolk',tip:'选一名此前没放过的活人放火药；限一次可引爆，炸死所有被放火药的非镇民。',why:'它的死亡会和恶魔/亚历克斯/狩猎天狼混在同一个天亮公布，多死夜必须拆来源。'},
  {n:'狩猎天狼',fac:'townsfolk',tip:'若你今夜死亡，被唤醒选一人杀死。',why:'它排在多数杀戮之后、裁缝之前——多死夜别只盘恶魔，也可能是狩猎天狼反杀带走一人。'},
- {n:'易容师',fac:'townsfolk',tip:'被动：恶魔误认自己角色；你死亡时恶魔得知真实角色，所以别早死。'},
+ {n:'易容师',fac:'townsfolk',tip:'被动：恶魔误认自己角色；你死亡时恶魔得知真实角色，所以别早死。',why:'它让恶魔误认自己的恶魔类型。恶魔打法不合理时未必伪装差，可能是易容师在场。'},
  {n:'裁缝',fac:'minion',tip:'提前得知白天谁会死，可隐藏夜死让其被视为存活。',why:'裁缝在很晚的位置处理“死亡是否公布”——它影响的是公布而非杀戮，天亮人数因此不可全信。'},
- {n:'树先生',fac:'townsfolk',tip:'继续选两人得名字数之和，外来者算 4。'},
- {n:'战略专家',fac:'townsfolk',tip:'依次得知首日所选三人的：是否同阵营 / 角色类型数量 / 距恶魔最近距离。'},
- {n:'拜花童',fac:'townsfolk',tip:'限一次，有人被处决后可送花；若他善良，他得知拜花童在场。'},
+ {n:'树先生',fac:'townsfolk',tip:'继续选两人得名字数之和，外来者算 4。',why:'它的信息要连成数字链才有价值。若被机械姬偷或中毒，数字就污染整条逻辑。'},
+ {n:'战略专家',fac:'townsfolk',tip:'依次得知首日所选三人的：是否同阵营 / 角色类型数量 / 距恶魔最近距离。',why:'它是三夜连续信息，不能孤立看单晚；第三晚“距恶魔距离”最适合残局缩圈。'},
+ {n:'拜花童',fac:'townsfolk',tip:'限一次，有人被处决后可送花；若他善良，他得知拜花童在场。',why:'它围绕处决死亡建可信链，不受裁缝藏夜死影响，适合反向验证白天是否处决错了。'},
  {n:'私家侦探',fac:'townsfolk',tip:'继续查一人今晚选择的目标。',why:'私家侦探在全场最后，能看到本夜几乎所有夜间选择的结果，是拆谎与还原“谁刀了谁”的关键。'},
  {n:'天亮',fac:'special',tip:'公布死亡（裁缝可隐藏）；狩猎天狼等夜死触发可能造成额外死亡。',why:'同一个天亮的死亡，可能混着恶魔刀、反杀、引爆、藏死爆发——先拆来源再下结论。'}
 ];
@@ -642,116 +632,142 @@ const NIGHT_OTHER=[
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
-
-$$('.tab').forEach(t=>t.addEventListener('click',()=>{
-  $$('.tab').forEach(x=>x.classList.remove('active'));
-  $$('.panel').forEach(x=>x.classList.remove('active'));
-  t.classList.add('active'); $('#tab-'+t.dataset.tab).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}));
+function switchTab(name){$$('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===name));$$('.panel').forEach(x=>x.classList.remove('active'));$('#tab-'+name).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+$$('.tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.tab)));
+let toastTimer;
+function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
+function copyText(text){
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>showToast('已复制今日建议')).catch(()=>fallbackCopy(text));}
+ else fallbackCopy(text);
+}
+function fallbackCopy(text){const ta=el('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');showToast('已复制今日建议');}catch(e){showToast('复制失败，请手动选择');}document.body.removeChild(ta);}
 
 /* TAB1 */
-let selectedCount=10,selectedChar=null;
-function renderCount(){const row=$('#countRow');row.innerHTML='';for(let c=7;c<=15;c++){const p=el('div','pill small'+(c===selectedCount?' active':''),c+'人');p.onclick=()=>{selectedCount=c;renderCount();renderConfig();};row.appendChild(p);}}
+let selectedCount=10,selectedChar=null,charFilter='all',privacy=false;
+const mods={tree:false,fanggu:false,jiqi:false};
+function renderCount(){const row=$('#countRow');row.innerHTML='';for(let c=7;c<=15;c++){const p=el('div','pill small'+(c===selectedCount?' active':''),c+'人');p.onclick=()=>{selectedCount=c;renderCount();renderConfig();renderOutsiderMod();};row.appendChild(p);}}
 function renderConfig(){const[t,o,m,d]=CONFIG[selectedCount];const s=$('#configStrip');s.innerHTML='';
-  [['镇民',t,'cfg-t'],['外来者',o,'cfg-o'],['爪牙',m,'cfg-m'],['恶魔',d,'cfg-d']].forEach(([l,n,c])=>s.appendChild(el('div','cfg '+c,'<span class="n">'+n+'</span>'+l)));
-  s.appendChild(el('div','cfg','<span class="n" style="color:#c9a24b">±</span><span style="color:#9a8a6a;font-size:11px">角色能力<br>可±外来者</span>'));}
+ [['镇民',t,'cfg-t'],['外来者',o,'cfg-o'],['爪牙',m,'cfg-m'],['恶魔',d,'cfg-d']].forEach(([l,n,c])=>s.appendChild(el('div','cfg '+c,'<span class="n">'+n+'</span>'+l)));}
+function renderOutsiderMod(){const wrap=$('#outsiderMod');wrap.innerHTML='';
+ const base=CONFIG[selectedCount][1];
+ wrap.appendChild(el('div','mod-title','外来者修正（角色能力会改变外来者数量）'));
+ const pills=el('div','mod-pills');
+ [['tree','树先生 +1'],['fanggu','方古 +1'],['jiqi','机械姬 -1']].forEach(([k,lab])=>{const p=el('div','mod-pill'+(mods[k]?' active':''),lab);p.onclick=()=>{mods[k]=!mods[k];renderOutsiderMod();};pills.appendChild(p);});
+ wrap.appendChild(pills);
+ const delta=(mods.tree?1:0)+(mods.fanggu?1:0)+(mods.jiqi?-1:0);
+ const modified=Math.max(0,base+delta);
+ const srcs=[];if(mods.tree)srcs.push('树先生 +1');if(mods.fanggu)srcs.push('方古 +1');if(mods.jiqi)srcs.push('机械姬 -1');
+ wrap.appendChild(el('div','mod-summary','基础外来者 <b>'+base+'</b> · 修正后 <span class="big">'+modified+'</span><br><span style="font-size:11.5px;color:#7a5a3a">修正来源：'+(srcs.length?srcs.join('，'):'无')+'</span>'));}
+function renderCharFilter(){const row=$('#charFilter');row.innerHTML='';
+ [['all','全部'],['townsfolk','镇民'],['outsider','外来者'],['minion','爪牙'],['demon','恶魔']].forEach(([k,lab])=>{const p=el('div','pill small'+(charFilter===k?' active':''),lab);if(k!=='all')p.dataset.fac=k;p.onclick=()=>{charFilter=k;renderCharFilter();renderCharPicker();};row.appendChild(p);});
+ const pr=el('div','pill small priv'+(privacy?' active':''),(privacy?'🔒 ':'🔓 ')+'隐私模式');pr.onclick=()=>{privacy=!privacy;renderCharFilter();renderCharPicker();renderRoleDetail();};row.appendChild(pr);}
 function renderCharPicker(){const wrap=$('#charPicker');wrap.innerHTML='';
-  ['townsfolk','outsider','minion','demon'].forEach(fk=>{const f=FAC[fk];const g=el('div','fac-group');
-    g.appendChild(el('div','fac-head','<span class="fac-dot" style="background:'+f.dot+'"></span>'+f.label));
-    const grid=el('div','char-grid');
-    CHARACTERS.filter(c=>c.fac===fk).forEach(c=>{const b=el('div','char-btn cb-'+fk+(selectedChar===c?' active':''),c.name+(c.key?'<span class="star">★</span>':''));
-      b.onclick=()=>{selectedChar=c;renderCharPicker();renderRoleDetail();$('#roleDetail').scrollIntoView({behavior:'smooth',block:'start'});};grid.appendChild(b);});
-    g.appendChild(grid);wrap.appendChild(g);});}
+ ['townsfolk','outsider','minion','demon'].forEach(fk=>{if(charFilter!=='all'&&charFilter!==fk)return;const f=FAC[fk];const g=el('div','fac-group');
+  g.appendChild(el('div','fac-head','<span class="fac-dot" style="background:'+f.dot+'"></span>'+f.label));
+  const grid=el('div','char-grid');
+  CHARACTERS.filter(c=>c.fac===fk).forEach(c=>{const on=(!privacy&&selectedChar===c);const b=el('div','char-btn cb-'+fk+(on?' active':''),c.name+(c.key?'<span class="star">★</span>':''));
+   b.onclick=()=>{selectedChar=c;renderCharPicker();renderRoleDetail();$('#roleDetail').scrollIntoView({behavior:'smooth',block:'start'});};grid.appendChild(b);});
+  g.appendChild(grid);wrap.appendChild(g);});}
 function renderRoleDetail(){const box=$('#roleDetail');if(!selectedChar){box.innerHTML='';return;}const c=selectedChar,f=FAC[c.fac];box.innerHTML='';
-  const card=el('div','card');
-  card.innerHTML=
-    '<div class="detail-head"><div class="detail-name">'+c.name+(c.key?' <span style="color:#c9a24b;font-size:14px">★重点</span>':'')+'</div><span class="fac-badge fb-'+c.fac+'">'+f.label+'</span></div>'+
-    '<div class="tagline">'+c.tagline+'</div><div class="divider"></div>'+
-    '<div class="field"><div class="lab">🎯 胜率核心</div><div class="val">'+c.core+'</div></div>'+
-    '<div class="field"><div class="lab">🪜 开局三步</div><ol class="steps">'+c.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol></div>'+
-    '<div class="field"><div class="lab">📢 什么时候公开</div><div class="val">'+c.when+'</div></div>'+
-    '<div class="field"><div class="lab">⚠️ 最怕</div><div class="val">'+c.fear+'</div></div>'+
-    '<div class="oneliner"><span class="star">★ 一句话打法</span>'+c.one+'</div>';
-  box.appendChild(card);}
+ const card=el('div','card');
+ const head=privacy
+  ? '<div class="detail-name">当前角色建议</div><div class="tagline">隐私模式 · 已隐藏身份名</div>'
+  : '<div class="detail-head"><div class="detail-name">'+c.name+(c.key?' <span style="color:#c9a24b;font-size:14px">★重点</span>':'')+'</div><span class="fac-badge fb-'+c.fac+'">'+f.label+'</span></div><div class="tagline">'+c.tagline+'</div>';
+ let extra='';
+ if((c.fac==='townsfolk'||c.fac==='outsider')&&c.talkTo)extra='<div class="field"><div class="lab">🤝 优先私聊对象</div><div class="partners">'+c.talkTo.map(t=>'<span class="ptag">'+t+'</span>').join('')+'</div></div>';
+ if((c.fac==='minion'||c.fac==='demon')&&c.fakeClaim)extra='<div class="field"><div class="lab">🎭 推荐伪装</div><ul class="mini-list">'+c.fakeClaim.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>';
+ if(c.note)extra+='<div class="note">提醒：'+c.note+'</div>';
+ card.innerHTML=head+'<div class="divider"></div>'+
+  '<div class="field"><div class="lab">🎯 胜率核心</div><div class="val">'+c.core+'</div></div>'+
+  '<div class="field"><div class="lab">🪜 开局三步</div><ol class="steps">'+c.steps.map(s=>'<li>'+s+'</li>').join('')+'</ol></div>'+
+  '<div class="field"><div class="lab">📢 什么时候公开</div><div class="val">'+c.when+'</div></div>'+
+  extra+
+  '<div class="field"><div class="lab">⚠️ 最怕</div><div class="val">'+c.fear+'</div></div>'+
+  '<div class="oneliner"><span class="star">★ 一句话打法</span>'+c.one+'</div>';
+ box.appendChild(card);}
 
-/* TAB2 局势 + 视角 */
+/* TAB2 */
 let selectedSit=null,perspective='good';
 $$('.persp-btn').forEach(b=>b.onclick=()=>{$$('.persp-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');perspective=b.dataset.side;renderSitDetail();});
 function renderSitRow(){const row=$('#sitRow');row.innerHTML='';SITUATIONS.forEach((s,i)=>{const p=el('div','pill'+(selectedSit===i?' active':''),s.name);p.onclick=()=>{selectedSit=i;renderSitRow();renderSitDetail();};row.appendChild(p);});}
+function jumpToToday(preset){Object.keys(answers).forEach(k=>delete answers[k]);Object.assign(answers,preset);renderQuestions();renderEndgameToggle();switchTab('today');$('#genBtn').click();}
+function jumpToCombo(name){const idx=COMBOS.findIndex(c=>c.name===name);if(idx<0)return;selectedCombo=idx;renderComboRow();renderComboDetail();switchTab('combo');}
 function renderSitDetail(){const box=$('#sitDetail');if(selectedSit===null){box.innerHTML='';return;}const s=SITUATIONS[selectedSit];box.innerHTML='';
-  const perspBox=perspective==='good'
-    ? '<div class="box box-good"><span class="bl">😇 善良视角 · 现在该做</span>'+s.good+'</div>'
-    : '<div class="box box-evil"><span class="bl">😈 邪恶视角 · 现在该做</span>'+s.evil+'</div>';
-  const card=el('div','card');
-  card.innerHTML=
-    '<div class="combo-title">'+s.name+'</div>'+
-    '<div class="section-title" style="margin:14px 0 4px">优先怀疑机制排序 + 验证方法</div>'+
-    '<ol class="rank-list">'+s.causes.map(x=>'<li>'+x.c+'<span class="vfy"><b>验证：</b>'+x.v+'</span></li>').join('')+'</ol>'+
-    '<div class="box box-do"><span class="bl">✅ 现在最该做</span>'+s.doNow+'</div>'+
-    '<div class="box box-dont"><span class="bl">🚫 现在最不该做</span>'+s.dontNow+'</div>'+
-    '<div class="box box-ask"><span class="bl">❓ 该问谁什么</span>'+s.ask.map(x=>'• '+x).join('<br>')+'</div>'+
-    perspBox;
-  box.appendChild(card);}
+ const perspBox=perspective==='good'?'<div class="box box-good"><span class="bl">😇 善良视角 · 现在该做</span>'+s.good+'</div>':'<div class="box box-evil"><span class="bl">😈 邪恶视角 · 现在该做</span>'+s.evil+'</div>';
+ const card=el('div','card');
+ card.innerHTML='<div class="combo-title">'+s.name+'</div>'+
+  '<div class="section-title" style="margin:14px 0 4px">优先怀疑机制排序 + 验证方法</div>'+
+  '<ol class="rank-list">'+s.causes.map(x=>'<li>'+x.c+'<span class="vfy"><b>验证：</b>'+x.v+'</span></li>').join('')+'</ol>'+
+  '<div class="box box-do"><span class="bl">✅ 现在最该做</span>'+s.doNow+'</div>'+
+  '<div class="box box-dont"><span class="bl">🚫 现在最不该做</span>'+s.dontNow+'</div>'+
+  '<div class="box box-ask"><span class="bl">❓ 该问谁什么</span>'+s.ask.map(x=>'• '+x).join('<br>')+'</div>'+perspBox;
+ const nw=el('div','next-wrap');nw.appendChild(el('div','next-title','下一步'));
+ const b1=el('button','next-btn','<span class="ar">▶</span>带入今天怎么打：'+s.next.todayLabel);b1.onclick=()=>jumpToToday(s.next.todayPreset);nw.appendChild(b1);
+ s.next.combos.forEach(cn=>{const b=el('button','next-btn','<span class="ar">▶</span>查看组合反制：'+cn);b.onclick=()=>jumpToCombo(cn);nw.appendChild(b);});
+ card.appendChild(nw);box.appendChild(card);}
 
-/* TAB3 组合 */
+/* TAB3 */
 let selectedCombo=null;
 function renderComboRow(){const row=$('#comboRow');row.innerHTML='';COMBOS.forEach((c,i)=>{const p=el('div','pill'+(selectedCombo===i?' active':''),c.name);p.onclick=()=>{selectedCombo=i;renderComboRow();renderComboDetail();};row.appendChild(p);});}
 function renderComboDetail(){const box=$('#comboDetail');if(selectedCombo===null){box.innerHTML='';return;}const c=COMBOS[selectedCombo];box.innerHTML='';
-  const card=el('div','card');
-  card.innerHTML=
-    '<div class="combo-title">'+c.name+' <span class="combo-tier">'+c.tier+'</span></div>'+
-    '<div class="box box-threat"><span class="bl">🗡 威胁点</span>'+c.threat+'</div>'+
-    '<div class="box box-signal"><span class="bl">🔎 识别信号</span>'+c.signal.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-good"><span class="bl">😇 善良方反制</span>'+c.good+'</div>'+
-    '<div class="box box-evil"><span class="bl">😈 邪恶方使用技巧</span>'+c.evil+'</div>'+
-    '<div class="box box-misjudge"><span class="bl">⚠️ 常见误判</span>'+c.misjudge+'</div>';
-  box.appendChild(card);}
+ const card=el('div','card');
+ card.innerHTML='<div class="combo-title">'+c.name+' <span class="combo-tier">'+c.tier+'</span></div>'+
+  '<div class="box box-threat"><span class="bl">🗡 威胁点</span>'+c.threat+'</div>'+
+  '<div class="box box-signal"><span class="bl">🔎 识别信号</span>'+c.signal.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-good"><span class="bl">😇 善良方反制</span>'+c.good+'</div>'+
+  '<div class="box box-evil"><span class="bl">😈 邪恶方使用技巧</span>'+c.evil+'</div>'+
+  '<div class="box box-act"><span class="bl">🎬 邪恶方今天怎么演</span>'+c.act.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-misjudge"><span class="bl">⚠️ 常见误判</span>'+c.misjudge+'</div>';
+ box.appendChild(card);}
 
-/* TAB4 今天怎么打 */
+/* TAB4 */
 const answers={};
 function renderQuestions(){const list=$('#questionList');list.innerHTML='';
-  QUESTIONS.forEach((q,i)=>{const card=el('div','card q-card');
-    card.appendChild(el('div','q-label','<span class="q-num">'+(i+1)+'</span>'+q.label));
-    const row=el('div','opt-row');
-    q.opts.forEach(o=>{const b=el('div','opt'+(answers[q.id]===o.v?' active':''),o.t);b.onclick=()=>{answers[q.id]=(answers[q.id]===o.v?undefined:o.v);renderQuestions();};row.appendChild(b);});
-    card.appendChild(row);list.appendChild(card);});}
-function renderEndgameToggle(){const wrap=$('#endgameToggle');wrap.innerHTML='';
-  const card=el('div','card q-card endgame-card');
-  card.appendChild(el('div','q-label','<span class="q-num">🩸</span>当前是否进入 5 人及以下残局？'));
-  const row=el('div','opt-row');
-  [{v:undefined,t:'否'},{v:'y',t:'是'}].forEach(o=>{const b=el('div','opt'+(answers.endgame===o.v?' active':''),o.t);b.dataset.v=o.v||'n';b.onclick=()=>{answers.endgame=o.v;renderEndgameToggle();};row.appendChild(b);});
-  card.appendChild(row);
-  card.appendChild(el('div',null,'<div style="font-size:11.5px;color:#8a6a4a;margin-top:6px">残局模式会让建议变硬：要求公开、优先盘藏死与换人。</div>'));
-  wrap.appendChild(card);}
-$('#genBtn').onclick=()=>{const r=buildTodayAdvice(answers);const box=$('#todayResult');box.innerHTML='';
-  const card=el('div','card');
-  let html='<div class="result-title">⚡ 今日行动建议</div><div class="divider"></div>'+
-    '<div class="box box-headline"><span class="bl">🎯 今日处决倾向</span>'+r.targ.map(x=>'• '+x).join('<br>')+'</div>';
-  if(r.endgame)html+='<div class="box box-endgame"><span class="bl">🩸 残局收网清单</span>'+r.endgame.map(x=>'• '+x).join('<br>')+'</div>';
-  html+=
-    '<div class="box box-suspect"><span class="bl">🧩 优先怀疑的机制</span>'+r.mech.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-threat"><span class="bl">🗡 今天适合处决</span>'+r.killGood.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-misjudge"><span class="bl">🛑 今天不适合处决</span>'+r.killBad.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-do"><span class="bl">🛡 今天应该保护</span>'+r.protect.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-dont"><span class="bl">🚫 今天不该做</span>'+r.dont.map(x=>'• '+x).join('<br>')+'</div>'+
-    '<div class="box box-ask"><span class="bl">❓ 今天应该问</span>'+r.ask.map(x=>'• '+x).join('<br>')+'</div>';
-  card.innerHTML=html;box.appendChild(card);box.scrollIntoView({behavior:'smooth',block:'start'});};
+ QUESTIONS.forEach((q,i)=>{const card=el('div','card q-card');card.appendChild(el('div','q-label','<span class="q-num">'+(i+1)+'</span>'+q.label));
+  const row=el('div','opt-row');q.opts.forEach(o=>{const b=el('div','opt'+(answers[q.id]===o.v?' active':''),o.t);b.onclick=()=>{answers[q.id]=(answers[q.id]===o.v?undefined:o.v);renderQuestions();};row.appendChild(b);});
+  card.appendChild(row);list.appendChild(card);});}
+function renderEndgameToggle(){const wrap=$('#endgameToggle');wrap.innerHTML='';const card=el('div','card q-card endgame-card');
+ card.appendChild(el('div','q-label','<span class="q-num">🩸</span>当前是否进入 5 人及以下残局？'));
+ const row=el('div','opt-row');[{v:undefined,t:'否'},{v:'y',t:'是'}].forEach(o=>{const b=el('div','opt'+(answers.endgame===o.v?' active':''),o.t);b.dataset.v=o.v||'n';b.onclick=()=>{answers.endgame=o.v;renderEndgameToggle();};row.appendChild(b);});
+ card.appendChild(row);card.appendChild(el('div',null,'<div style="font-size:11.5px;color:#8a6a4a;margin-top:6px">残局模式会让建议变硬：要求公开、优先盘藏死与换人。</div>'));wrap.appendChild(card);}
+function todayCopyText(r){const L=['【卡卡利科夜未眠 今日建议】','今日主线：'+r.mainline,'次要线索：'+(r.secondary.length?r.secondary.join('、'):'无')];
+ if(r.defer.length)L.push('暂时别管：'+r.defer.join('；'));
+ if(r.endgame){L.push('');L.push('残局收网清单：');r.endgame.forEach(x=>L.push('- '+x));}
+ L.push('');L.push('今天可以处决：');r.executeNow.forEach(x=>L.push('- '+x));
+ L.push('今天不要处决：');r.doNotExecute.forEach(x=>L.push('- '+x));
+ L.push('今天先观察：');r.watchList.forEach(x=>L.push('- '+x));
+ L.push('');L.push('今天该问：');r.questions.forEach(x=>L.push('- '+x));
+ L.push('今天保护：');r.protect.forEach(x=>L.push('- '+x));
+ L.push('');L.push('关键警告：');r.warnings.forEach(x=>L.push('- '+x));
+ return L.join('\n');}
+$('#genBtn').onclick=()=>{const r=buildTodayAdvice(answers);const box=$('#todayResult');box.innerHTML='';const card=el('div','card');
+ let html='<div class="result-title">⚡ 今日行动建议</div><div class="divider"></div>'+
+  '<div class="box box-headline"><span class="bl">🎯 今日主线（只盯这一个）</span>'+r.mainline+'</div>'+
+  '<div class="box box-suspect"><span class="bl">🔱 次要线索</span>'+(r.secondary.length?r.secondary.map(x=>'• '+x).join('<br>'):'暂无')+'</div>'+
+  '<div class="box box-misjudge"><span class="bl">😴 暂时别管</span>'+(r.defer.length?r.defer.map(x=>'• '+x).join('<br>'):'暂无')+'</div>';
+ if(r.endgame)html+='<div class="box box-endgame"><span class="bl">🩸 残局收网清单</span>'+r.endgame.map(x=>'• '+x).join('<br>')+'</div>';
+ html+='<div class="box box-threat"><span class="bl">🗡 今天可以处决</span>'+r.executeNow.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-do"><span class="bl">🛑 今天不要处决</span>'+r.doNotExecute.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-watch"><span class="bl">👁 今天先观察</span>'+r.watchList.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-ask"><span class="bl">❓ 今天该问什么</span>'+r.questions.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-verify"><span class="bl">🛡 今天保护谁</span>'+r.protect.map(x=>'• '+x).join('<br>')+'</div>'+
+  '<div class="box box-dont"><span class="bl">❗ 关键警告</span>'+r.warnings.map(x=>'• '+x).join('<br>')+'</div>';
+ card.innerHTML=html;
+ const cp=el('button','copy-btn','📋 复制今日建议');cp.onclick=()=>copyText(todayCopyText(r));card.appendChild(cp);
+ box.appendChild(card);box.scrollIntoView({behavior:'smooth',block:'start'});};
 
-/* TAB5 夜晚顺序 */
+/* TAB5 */
 let nightMode='first';
 const facLabel={townsfolk:['镇民','#3b6ea5'],outsider:['外来者','#2f8f7f'],minion:['爪牙','#c47a1e'],demon:['恶魔','#a8253a'],special:['流程','#7a6a52']};
 function renderNight(){const list=$('#nightList');list.innerHTML='';const data=nightMode==='first'?NIGHT_FIRST:NIGHT_OTHER;
-  data.forEach((s,i)=>{const[flab,fcol]=facLabel[s.fac];const step=el('div','night-step'+(s.fac==='special'?' special':''));
-    const why=s.why?'<span class="step-why">▸ 为何影响判断：'+s.why+'</span>':'';
-    step.innerHTML='<div class="step-num">'+(i+1)+'</div><div style="flex:1"><div class="step-name">'+s.n+'</div>'+
-      '<div class="step-tip"><div style="padding:2px 0 2px">'+s.tip+why+'</div></div></div>'+
-      '<span class="step-fac" style="background:'+fcol+'">'+flab+'</span><span class="step-arrow">▶</span>';
-    step.onclick=()=>step.classList.toggle('open');list.appendChild(step);});}
+ data.forEach((s,i)=>{const[flab,fcol]=facLabel[s.fac];const step=el('div','night-step'+(s.fac==='special'?' special':''));
+  const why=s.why?'<span class="step-why">▸ 为何影响判断：'+s.why+'</span>':'';
+  step.innerHTML='<div class="step-num">'+(i+1)+'</div><div style="flex:1"><div class="step-name">'+s.n+'</div><div class="step-tip"><div style="padding:2px 0">'+s.tip+why+'</div></div></div><span class="step-fac" style="background:'+fcol+'">'+flab+'</span><span class="step-arrow">▶</span>';
+  step.onclick=()=>step.classList.toggle('open');list.appendChild(step);});}
 $$('.toggle-btn').forEach(b=>b.onclick=()=>{$$('.toggle-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');nightMode=b.dataset.night;renderNight();});
 
 /* init */
-renderCount();renderConfig();renderCharPicker();renderSitRow();renderComboRow();renderQuestions();renderEndgameToggle();renderNight();
+renderCount();renderConfig();renderOutsiderMod();renderCharFilter();renderCharPicker();renderSitRow();renderComboRow();renderQuestions();renderEndgameToggle();renderNight();
 </script>
 </body>
 </html>
